@@ -8,7 +8,7 @@ public class JavaRpsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JavaRpsApplication.class, args);
-		System.out.println("Running");
+		System.out.println("[SpringBoot] - Running...");
 	}
 
 }
