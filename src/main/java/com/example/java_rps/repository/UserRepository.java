@@ -1,16 +1,14 @@
 package com.example.java_rps.repository;
 
-import com.example.java_rps.entity.User;
+import com.example.java_rps.model.MyUser;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByUsername(String username);
-    boolean existsByUsername(String username);
-    Optional<User> findByEmail(String email);
-    boolean existsByEmail(String email);
-    Optional<User> findByUsernameOrEmail(String username, String email);
+public interface UserRepository extends JpaRepository<MyUser, UUID> {
+    Optional<MyUser> findByUsername(String username);
 }

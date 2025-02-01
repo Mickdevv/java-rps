@@ -13,5 +13,4 @@ public class JavaRpsApplication {
 		SpringApplication.run(JavaRpsApplication.class, args);
 		System.out.println("[SpringBoot] - Running...");
 	}
-
 }
