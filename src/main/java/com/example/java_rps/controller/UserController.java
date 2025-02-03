@@ -1,7 +1,9 @@
 package com.example.java_rps.controller;
 
+import com.example.java_rps.model.MyUser;
 import com.example.java_rps.repository.UserRepository;
 import com.example.java_rps.service.MyUserDetailsService;
+import com.example.java_rps.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.User;
@@ -11,11 +13,25 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
-    public UserController(MyUserDetailsService userService) {
+    public UserController(UserService userService) {
+    }
+
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/register")
+    public MyUser register(@RequestBody MyUser user) {
+
+        return userService.register(user);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody MyUser user) {
+        return userService.verify(user);
     }
 
 //    @GetMapping("/")
@@ -24,12 +40,12 @@ public class UserController {
 //    }
 //
 //    @GetMapping("/{id}")
-//    public ResponseEntity<Object> getUserById(@PathVariable UUID id) {
+//    public ResponseEntity<Object> getUserById(@PathVariable int id) {
 //        return userService.getUserById(id);
 //    }
 //
 //    @PutMapping("/{id}")
-//    public ResponseEntity<Object> updateUser(@PathVariable UUID id, @RequestBody User user) {
+//    public ResponseEntity<Object> updateUser(@PathVariable int id, @RequestBody User user) {
 //        return userService.updateUser(id, user);
 //    }
 //
@@ -39,7 +55,7 @@ public class UserController {
 //    }
 //
 //    @DeleteMapping("/{id}")
-//    public ResponseEntity<Object> deleteUser(@PathVariable UUID id) {
+//    public ResponseEntity<Object> deleteUser(@PathVariable int id) {
 //        return userService.deleteUser(id);
 //    }
 }

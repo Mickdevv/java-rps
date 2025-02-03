@@ -9,7 +9,6 @@ import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/notes")
@@ -32,7 +31,7 @@ public class NoteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateNote(@PathVariable UUID id, @RequestBody Note note) {
+    public ResponseEntity<Object> updateNote(@PathVariable int id, @RequestBody Note note) {
         return noteService.updateNote(id, note);
     }
 
@@ -48,12 +47,12 @@ public class NoteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getNoteById(@PathVariable UUID id) {
+    public ResponseEntity<Object> getNoteById(@PathVariable int id) {
         return noteService.getNoteById(id);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteNote(@PathVariable UUID id) {
+    public ResponseEntity<Object> deleteNote(@PathVariable int id) {
         return noteService.deleteNote(id);
     }
 }

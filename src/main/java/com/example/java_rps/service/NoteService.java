@@ -25,7 +25,7 @@ public class NoteService {
         return new ResponseEntity<>(note, HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Object> getNoteById(UUID id) {
+    public ResponseEntity<Object> getNoteById(int id) {
         Optional<Note> noteOptional = noteRepository.findById(id);
 
         if (noteOptional.isEmpty()) {
@@ -35,7 +35,7 @@ public class NoteService {
         return ResponseEntity.ok(noteOptional.get());
     }
 
-    public ResponseEntity<Object> updateNote(UUID id, Note updatedNote) {
+    public ResponseEntity<Object> updateNote(int id, Note updatedNote) {
         Optional<Note> noteOptional = noteRepository.findById(id);
 
         if (noteOptional.isEmpty()) {
@@ -54,7 +54,7 @@ public class NoteService {
         return noteRepository.findAll();
     }
 
-    public ResponseEntity<Object> deleteNote(UUID id) {
+    public ResponseEntity<Object> deleteNote(int id) {
         Optional<Note> noteOptional = noteRepository.findById(id);
 
         if (noteOptional.isEmpty()) {

@@ -8,8 +8,8 @@ import java.util.UUID;
 @Table(name="note")
 public class Note {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String title;
     private String content;
 
